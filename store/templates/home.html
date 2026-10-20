@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pavi Store</title>
+</head>
+<body>
+    <h1>Welcome to Pavi Store</h1>
+    <h2>Our Products</h2>
+    <p style="text-align: center;">
+    <a href="{% url 'register' %}">Create Account / Register</a>
+</p>
+
+    {% for product in products %}
+        <div>
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+            <p>Price: ₹{{ product.price }}</p>
+        </div>
+    {% empty %}
+        <p>No products available yet.</p>
+    {% endfor %}
+</body>
+</html>

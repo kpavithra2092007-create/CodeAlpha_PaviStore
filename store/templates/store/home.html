@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pavi Store</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f4f8;
+        margin: 0;
+        padding: 30px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #263b5e;
+    }
+
+    h2 {
+        text-align: center;
+        color: #444;
+    }
+
+    div {
+        background: white;
+        padding: 20px;
+        margin: 15px auto;
+        max-width: 500px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px #ccc;
+    }
+</style>
+</head>
+<body>
+    <h1>Welcome to Pavi Store</h1>
+    <h2>Our Products</h2>
+    <p style="text-align: center; font-size: 18px;">
+    🛒 Shopping Cart: <span id="cart-count">0</span> items
+</p>
+<p style="text-align: center;">
+    <a href="{% url 'register' %}">Create Account / Register</a>
+    <p style="text-align: center;">
+    <a href="{% url 'logout' %}">Logout</a>
+</p>
+    <p style="text-align: center;">
+    <a href="{% url 'login' %}">Login</a>
+</p>
+</p>
+
+    {% for product in products %}
+        <div>
+            <h3>
+    <a href="{% url 'product_detail' product.id %}">
+        {{ product.name }}
+    </a>
+</h3>
+            <p>{{ product.description }}</p>
+            <p>Price: ₹{{ product.price }}</p>
+            <button type="button"
+             onclick="addToCart()">Add to Cart</button>
+             <p>
+    <a href="{% url 'place_order' product.id %}">Place Order</a>
+</p>
+        </div>
+    {% empty %}
+        <p>No products available yet.</p>
+    {% endfor %}
+    <script>
+    let cartCount = 0;
+
+    function addToCart() {
+        cartCount++;
+        document.getElementById("cart-count").textContent = cartCount;
+        alert("Product added to cart!");
+    }
+</script>
+</body>
+</html>

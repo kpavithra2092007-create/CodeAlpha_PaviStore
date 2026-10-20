@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }} - Pavi Store</title>
+</head>
+<body>
+    <h1>{{ product.name }}</h1>
+
+    <p>{{ product.description }}</p>
+
+    <h3>Price: ₹{{ product.price }}</h3>
+     <p>
+    <a href="{% url 'place_order' product.id %}">Place Order</a>
+</p>
+    <a href="/">Back to Home</a>
+</body>
+</html>
